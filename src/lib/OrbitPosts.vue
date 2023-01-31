@@ -5,7 +5,6 @@
       v-bind="$attrs"
       :is="params.style"
       :posts="items"
-      :total="total"
       v-if="status == 'success'"
     ></component>
     <slot name="loadingAnimation" v-else></slot>
@@ -14,34 +13,58 @@
   </div>
 </template>
 <script>
-import { members } from "@/sample-data";
-import MemberList from "@/templates/member-list/MemberList.vue";
+import API from "@/api";
+import Util from "@/lib/Util";
+import { onMounted, onUnmounted, computed } from "vue";
+
+import OrbitQuery from "@/lib/OrbitQuery";
 
 export default {
-  name: "OrbitPosts",
   props: {
     params: Object,
   },
-  components: {
-    MemberList,
-  },
-  data() {
-    return {
-      items: [],
-      total: 0,
-      status: "fail",
-      isFetchingNextPage: true,
+  components: {},
+  setup(props) {
+    const params = computed(() => {
+      var params = Util.removeEmptyParams(
+        JSON.parse(JSON.stringify(props.params))
+      );
+
+      params.post_type = params.post_type ? params.post_type : "posts";
+      return params;
+    });
+
+    //console.log( params.value );
+
+    const requestAPI = (params) => API.requestPosts(params.post_type, params);
+
+    const { items, watchScroll, scrollComponent, status, isFetchingNextPage } =
+      OrbitQuery(params.value, requestAPI);
+
+    const handleScroll = () => {
+      Util.debounceEvent(function () {
+        watchScroll();
+      }, 50);
     };
-  },
-  created() {
-    this.$store.state.processing = true;
-    setTimeout(() => {
-      this.items = members;
-      this.total = this.members ? this.members.length : 0;
-      this.status = "success";
-      this.isFetchingNextPage = false;
-      this.$store.state.processing = false;
-    }, 1500);
+
+    onMounted(() => {
+      if (props.params.pagination) {
+        window.addEventListener("scroll", handleScroll);
+      }
+    });
+
+    onUnmounted(() => {
+      if (props.params.pagination) {
+        window.removeEventListener("scroll", handleScroll);
+      }
+    });
+
+    return {
+      items,
+      status,
+      scrollComponent,
+      isFetchingNextPage,
+    };
   },
 };
 </script>

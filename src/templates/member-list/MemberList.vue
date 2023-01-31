@@ -1,6 +1,6 @@
 <template>
   <ul class="divide-y divide-lightgray">
-    <li class="py-3 sm:py-4" v-for="member in posts" :key="member.id">
+    <li class="py-3 sm:py-4" v-for="member in authors" :key="member.id">
       <div class="flex items-center space-x-4">
         <div class="flex-shrink-1">
           <a class="p-0.5 inline-block">
@@ -35,9 +35,7 @@
 export default {
   name: "MemberList",
   props: {
-    posts: Array,
+    authors: Array,
   },
-  components: {},
-  methods: {},
 };
 </script>
