@@ -34,7 +34,7 @@
 
 <script>
 import { ref } from "vue";
-import { helper } from "@/lib/helper";
+import Util from "@/lib/Util";
 import AppHeader from "./AppHeader.vue";
 import AppMainTitle from "./AppMainTitle.vue";
 import AppFooter from "./AppFooter.vue";
@@ -102,10 +102,8 @@ export default {
   mounted() {
     const component = this;
 
-    const { debounceEvent } = helper();
-
     window.addEventListener("scroll", function () {
-      debounceEvent(() => {
+      Util.debounceEvent(function () {
         if (window.scrollY > 34) {
           component.scrolled = true;
         } else {
@@ -128,7 +126,7 @@ export default {
 }
 
 #app-footer {
-  @apply sticky z-10 bg-lightergray bottom-0 w-full border-t border-gray;
+  @apply sticky z-10 bg-lighter-gray bottom-0 w-full border-t border-gray;
 }
 
 .footer-list li {
@@ -136,9 +134,6 @@ export default {
 }
 .footer-list li svg {
   @apply inline-block;
-}
-
-.header-list li {
 }
 
 .header-list li:nth-child(1),
@@ -159,6 +154,6 @@ export default {
 }
 
 .maintitle {
-  @apply text-2xl p-4 pt-4 bg-purple text-white border-b border-lightgray;
+  @apply text-2xl p-4 pt-4 bg-purple text-white border-b border-light-gray;
 }
 </style>

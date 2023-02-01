@@ -1,7 +1,7 @@
 <template>
-  <div class="space-y-6">
-    <div class="animate-pulse flex space-x-4" v-for="i in total" :key="i">
-      <div class="rounded-full bg-light-gray h-10 w-10"></div>
+  <div class="py-3 sm:py-4" v-for="i in total" :key="i">
+    <div class="animate-pulse flex space-x-4">
+      <div class="rounded-full bg-light-gray h-12 w-12"></div>
       <div class="flex-1 space-y-3 py-1">
         <div class="h-2 bg-light-gray rounded"></div>
         <div class="space-y-3">

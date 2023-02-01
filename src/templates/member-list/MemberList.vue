@@ -1,5 +1,5 @@
 <template>
-  <ul class="divide-y divide-lightgray">
+  <ul class="divide-y divide-light-gray">
     <li class="py-3 sm:py-4" v-for="member in authors" :key="member.id">
       <div class="flex items-center space-x-4">
         <div class="flex-shrink-1">
@@ -11,7 +11,7 @@
               v-if="member.name"
             /> -->
             <span
-              class="bg-lightgray w-12 h-12 object-cover rounded-full font-semibold inline-block ring-white ring-2 flex items-center justify-center"
+              class="bg-light-gray w-12 h-12 object-cover rounded-full font-semibold inline-block ring-white ring-2 flex items-center justify-center"
               v-if="member.name"
             >
               {{ member.name[0] }}

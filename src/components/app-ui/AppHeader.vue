@@ -4,7 +4,7 @@
     :class="[
       `${colors}`,
       {
-        'border-b border-lightgray': scrolled,
+        'border-b border-light-gray': scrolled,
         'opacity-100 py-4 px-2 sticky top-0 z-10 h-auto': !move_sticky_up,
       },
     ]"
