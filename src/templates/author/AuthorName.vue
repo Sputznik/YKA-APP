@@ -8,7 +8,10 @@
       author.name ? author.name : author.slug
     }}</span>
   </router-link>
-  <div class="h-2 bg-light-gray rounded animate-pulse mb-2" v-else></div>
+  <span
+    v-else
+    class="inline-block h-2 w-10 bg-light-gray rounded animate-pulse"
+  ></span>
 </template>
 
 <script>

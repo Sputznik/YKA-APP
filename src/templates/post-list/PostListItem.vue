@@ -34,11 +34,10 @@
           :params="{ style: 'AuthorName', id: post.author }"
           v-if="post.author"
         />
-        <div v-if="getFirstCategory(post)">
-          <OrbitTerm
-            :params="{ style: 'TermName', id: getFirstCategory(post) }"
-          />
-        </div>
+        <OrbitTerm
+          v-if="getFirstCategory(post)"
+          :params="{ style: 'TermName', id: getFirstCategory(post) }"
+        />
       </div>
     </div>
   </article>
