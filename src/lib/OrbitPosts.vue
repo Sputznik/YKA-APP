@@ -18,12 +18,13 @@ import Util from "@/lib/Util";
 import { onMounted, onUnmounted, computed } from "vue";
 
 import OrbitQuery from "@/lib/OrbitQuery";
+import PostList from "@/templates/post-list/PostList.vue";
 
 export default {
   props: {
     params: Object,
   },
-  components: {},
+  components: { PostList },
   setup(props) {
     const params = computed(() => {
       var params = Util.removeEmptyParams(

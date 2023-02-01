@@ -7,11 +7,13 @@ import API from "@/api.js";
 import { computed } from "vue";
 import { useQuery } from "vue-query";
 
+import TermName from "@/templates/term/TermName.vue";
+
 export default {
   props: {
     params: Object,
   },
-  components: {},
+  components: { TermName },
 
   setup(props) {
     function getTerm() {

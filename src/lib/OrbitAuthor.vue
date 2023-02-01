@@ -7,11 +7,15 @@ import API from "@/api.js";
 import { computed } from "vue";
 import { useQuery } from "vue-query";
 
+import AuthorName from "@/templates/author/AuthorName.vue";
+
 export default {
   props: {
     params: Object,
   },
-  components: {},
+  components: {
+    AuthorName,
+  },
 
   setup(props) {
     const getAuthor = () => API.requestUser(props.params.id);
