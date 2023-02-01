@@ -1,36 +1,45 @@
-// import { createRouter, createWebHashHistory } from "vue-router";
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "@/views/Home.vue";
-import Events from "@/views/Events.vue";
-import Members from "@/views/Members.vue";
-import Profile from "@/views/Profile.vue";
-import Comments from "@/views/Comments.vue";
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: () => import("@/views/Home"),
   },
   {
     path: "/members",
     name: "Members",
-    component: Members,
+    component: () => import("@/views/Members"),
   },
   {
     path: "/events",
     name: "Events",
-    component: Events,
+    component: () => import("@/views/Events"),
   },
   {
     path: "/comments",
     name: "Comments",
-    component: Comments,
+    component: () => import("@/views/Comments"),
   },
   {
     path: "/profile",
     name: "Profile",
-    component: Profile,
+    component: () => import("@/views/Profile"),
+  },
+  {
+    path: "/:year/:month/:slug",
+    name: "SinglePost",
+    component: () => import("@/views/SinglePost"),
+  },
+  {
+    path: "/author/:slug",
+    name: "Author",
+    component: () => import("@/views/Author"),
+  },
+  {
+    path: "/:taxonomy/:slug",
+    name: "Archive",
+    component: () => import("@/views/Archive"),
   },
 ];
 
