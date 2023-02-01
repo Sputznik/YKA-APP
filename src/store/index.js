@@ -2,13 +2,18 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
-    settings: {},
-    account: {},
-    processing: false,
-    errors: [],
     post: {},
+    errors: [],
+    account: {},
+    settings: {},
+    processing: false,
   },
-  mutations: {},
+  mutations: {
+    setProcessing(state, flag) {
+      state.processing = flag;
+      return state.processing;
+    },
+  },
   actions: {},
   modules: {},
 });
