@@ -1,5 +1,6 @@
 <template>
   <router-link
+    v-bind="$attrs"
     :to="getAuthorLink(author)"
     class="hover:text-dark-red"
     v-if="status == 'success'"
@@ -10,7 +11,8 @@
   </router-link>
   <span
     v-else
-    class="inline-block h-2 w-10 bg-light-gray rounded animate-pulse"
+    v-bind="$attrs"
+    class="author-name inline-block h-2 w-10 bg-light-gray rounded animate-pulse"
   ></span>
 </template>
 

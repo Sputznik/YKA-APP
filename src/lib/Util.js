@@ -33,7 +33,7 @@ export default {
     //console.log( author );
     var route = {
       name: "Author",
-      // params: { slug: author.slug, author: JSON.stringify(author) },
+      state: { author: JSON.stringify(author) },
       params: { slug: author.slug },
     };
     return route;

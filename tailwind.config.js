@@ -22,6 +22,7 @@ module.exports = {
       "blue-100": "#003E5A",
       "light-blue": "#006491",
       orange: "#F9AB70",
+      "dark-red": "#d30000",
     },
     extend: {
       boxShadow: {
