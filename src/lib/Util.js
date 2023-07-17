@@ -42,6 +42,7 @@ export default {
     var route = {
       name: "",
       params: {},
+      state: { id: post.id, post: JSON.stringify(post) },
     };
 
     if (post.type != undefined && post.type == "post") {
