@@ -1,19 +1,44 @@
 .fluentProgressBar-normal {
- 	background-color: #0078d4;
-  	height: 4px;
- }
+  background-color: #0078d4;
+  height: 4px;
+}
 
 .fluentProgressBar-waiting {
-	background: #DB6933;
-  background: -moz-linear-gradient( 90deg, rgba(255,255,255,1) 0%, rgba(223,118,68,1) 35%, rgba(219,105,51,1) 100% );
-  background: -webkit-linear-gradient( 90deg, rgba(255,255,255,1) 0%, rgba(223,118,68,1) 35%, rgba(219,105,51,1) 100% );
-  background: -o-linear-gradient( 90deg, rgba(255,255,255,1) 0%, rgba(223,118,68,1) 35%, rgba(219,105,51,1) 100% );
-  background: -ms-linear-gradient( 90deg, rgba(255,255,255,1) 0%, rgba(223,118,68,1) 35%, rgba(219,105,51,1) 100% );
+  background: #db6933;
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(223, 118, 68, 1) 35%,
+    rgba(219, 105, 51, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(223, 118, 68, 1) 35%,
+    rgba(219, 105, 51, 1) 100%
+  );
+  background: -o-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(223, 118, 68, 1) 35%,
+    rgba(219, 105, 51, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(223, 118, 68, 1) 35%,
+    rgba(219, 105, 51, 1) 100%
+  );
   /*
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0078d4', endColorstr='#0078d4', GradientType=1 );
   */
   height: 4px;
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(223,118,68,1) 35%, rgba(219,105,51,1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(223, 118, 68, 1) 35%,
+    rgba(219, 105, 51, 1) 100%
+  );
 
   left: 0;
   top: -1px;
@@ -21,16 +46,16 @@
 
   /*z-index: 1000;*/
   -webkit-animation: progressBarAnimation 2s linear infinite;
-	animation: progressBarAnimation 2s linear infinite;
+  animation: progressBarAnimation 2s linear infinite;
 }
 
 @keyframes progressBarAnimation {
-	0% {
-		left: -50%;
-	}
-	100% {
-		left: 100%;
-	}
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 /* route transitions *
@@ -74,4 +99,26 @@
 .slideup-enter-from,
 .slideup-leave-to {
   opacity: 0;
+}
+
+figure {
+  max-width: 100%;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  position: relative;
+  display: inline-block;
+}
+.dot::after {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: "";
+  border-radius: 100px;
+  @apply rounded-full bg-gray;
 }

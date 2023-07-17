@@ -9,7 +9,7 @@
 
 <script>
 import { ref } from "vue";
-import { useRoute } from "vue-router";
+import PostBase from "@/templates/single/PostBase.vue";
 
 export default {
   name: "SingleBase",
@@ -17,9 +17,9 @@ export default {
     type: String,
     template: String,
   },
+  components: { PostBase },
   setup(props) {
     var component = ref(props.template);
-    const route = useRoute();
 
     const post = JSON.parse(history.state.post);
 
