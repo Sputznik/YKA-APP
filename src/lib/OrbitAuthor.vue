@@ -8,6 +8,7 @@ import { computed } from "vue";
 import { useQuery } from "vue-query";
 
 import AuthorName from "@/templates/author/AuthorName.vue";
+import AuthorAvatar from "@/templates/author/AuthorAvatar.vue";
 
 export default {
   props: {
@@ -15,6 +16,7 @@ export default {
   },
   components: {
     AuthorName,
+    AuthorAvatar,
   },
 
   setup(props) {
