@@ -9,6 +9,12 @@
       <router-link :to="{ name: 'Comments' }">
         <Icon icon="comment" class="inline text-white h-6 w-6" />
       </router-link>
+      <button data-toggle-bottom-sheet="social-share">
+        <Icon
+          icon="plus"
+          class="inline text-white h-6 w-6 pointer-events-none"
+        />
+      </button>
     </template>
     <template v-slot:appbody>
       <div :class="`single-${post.type}`">
@@ -47,6 +53,11 @@
           </OrbitPosts>
         </div>
       </div>
+      <SocialShareBottomSheet
+        shareId="social-share"
+        :status="status"
+        :post="post"
+      />
     </template>
   </AppUI>
 </template>
@@ -63,6 +74,7 @@ import PostDescription from "@/templates/post/Description.vue";
 import PostFeaturedImage from "@/templates/post/FeaturedImage.vue";
 import AuthorBoxWithMeta from "@/templates/post/AuthorBoxWithMeta.vue";
 import PostListAnimation from "@/templates/post-list/PostListAnimation.vue";
+import SocialShareBottomSheet from "@/templates/post/SocialShareBottomSheet.vue";
 
 export default {
   name: "PostBase",
@@ -82,6 +94,7 @@ export default {
     PostFeaturedImage,
     AuthorBoxWithMeta,
     PostListAnimation,
+    SocialShareBottomSheet,
   },
   methods: {},
 };
