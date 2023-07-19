@@ -1,5 +1,5 @@
 <template>
-  <div id="app-footer" v-if="!hide_footer">
+  <div id="app-footer" v-if="showFooter">
     <ul class="footer-list">
       <li v-for="item in items" :key="item">
         <router-link :to="{ name: item.routeName }" class="hover:opacity-80">
@@ -20,49 +20,46 @@
   </div>
 </template>
 <script>
-import { ref } from "vue";
-import Icon from "@/components/Icon";
+import Icon from "@/components/Icon.vue";
 
 export default {
   name: "AppFooter",
   props: {
-    hide_footer: Boolean,
+    showFooter: Boolean,
   },
   components: {
     Icon,
   },
-  setup() {
-    const items = ref([
-      {
-        icon: "Home",
-        routeName: "Home",
-        allowedRoutes: ["Home"],
-      },
-
-      {
-        icon: "Members",
-        routeName: "Members",
-        allowedRoutes: ["Members", "SingleMember"],
-      },
-      {
-        icon: "Event",
-        routeName: "Events",
-        allowedRoutes: ["Events", "SingleEvent"],
-      },
-      {
-        icon: "Comment",
-        routeName: "Comments",
-        allowedRoutes: ["Comments"],
-      },
-      {
-        icon: "Profile",
-        routeName: "Profile",
-        allowedRoutes: ["Profile"],
-      },
-    ]);
-
+  data() {
     return {
-      items,
+      items: [
+        {
+          icon: "Home",
+          routeName: "Home",
+          allowedRoutes: ["Home"],
+        },
+
+        {
+          icon: "Members",
+          routeName: "Members",
+          allowedRoutes: ["Members", "SingleMember"],
+        },
+        {
+          icon: "Event",
+          routeName: "Events",
+          allowedRoutes: ["Events", "SingleEvent"],
+        },
+        {
+          icon: "Comment",
+          routeName: "Comments",
+          allowedRoutes: ["Comments"],
+        },
+        {
+          icon: "Profile",
+          routeName: "Profile",
+          allowedRoutes: ["Profile"],
+        },
+      ],
     };
   },
 };

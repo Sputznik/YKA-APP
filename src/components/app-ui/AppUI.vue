@@ -1,159 +1,135 @@
 <template>
   <div class="app-ui">
-    <AppHeader
+    <PrimaryAppBar
       :title="title"
-      :colors="colors"
       :scrolled="scrolled"
-      :move_sticky_up="move_sticky_up"
-      :stickytitle_classes="stickytitle_classes"
+      :class="appbarClasses"
+      :showSecondaryAppbar="showSecondaryAppbar"
     >
       <template v-for="(index, name) in $slots" v-slot:[name]>
         <slot :name="name" />
       </template>
-    </AppHeader>
-    <AppMainTitle
-      :hide_maintitle="hide_maintitle"
-      :maintitle_classes="maintitle_classes"
+    </PrimaryAppBar>
+    <SecondaryAppBar
+      ref="secondaryAppBar"
       :title="title"
-      :colors="colors"
-      :scrolled="scrolled"
-      :move_sticky_up="move_sticky_up"
-      :stickytitle_classes="stickytitle_classes"
+      :class="appbarClasses"
+      :showSecondaryAppbar="showSecondaryAppbar"
     >
       <template v-for="(index, name) in $slots" v-slot:[name]>
         <slot :name="name" />
       </template>
-    </AppMainTitle>
+    </SecondaryAppBar>
     <AppProgressBar />
-    <div class="p-4 bg-white min-h-screen" :class="`${body_classes}`">
+    <div class="p-4 bg-white min-h-screen" :class="bodyClasses">
       <slot name="appbody"></slot>
     </div>
-    <AppFooter :hide_footer="hide_footer" />
+    <AppFooter :showFooter="showFooter" />
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
 import Util from "@/lib/Util";
-import AppHeader from "./AppHeader.vue";
-import AppMainTitle from "./AppMainTitle.vue";
 import AppFooter from "./AppFooter.vue";
-import AppProgressBar from "./AppProgressBar";
+import AppProgressBar from "./AppProgressBar.vue";
+import PrimaryAppBar from "./PrimaryAppBar.vue";
+import SecondaryAppBar from "./SecondaryAppBar.vue";
 
 export default {
   name: "AppUI",
   props: {
-    configUI: Object,
     title: String,
+    bodyClasses: String,
+    appbarClasses: String,
+    showFooter: {
+      type: Boolean,
+      default: true,
+    },
+    showSecondaryAppbar: {
+      type: Boolean,
+      default: false,
+    },
   },
   components: {
-    AppHeader,
-    AppMainTitle,
-    AppProgressBar,
     AppFooter,
+    AppProgressBar,
+    PrimaryAppBar,
+    SecondaryAppBar,
   },
   data() {
     return {
       scrolled: false,
-      move_sticky_up: false,
     };
   },
-  setup(props) {
-    // console.log(props);
-    const maintitle_classes = ref(null);
-    maintitle_classes.value =
-      props.configUI && props.configUI.maintitle_classes
-        ? props.configUI.maintitle_classes
-        : "";
-    const stickytitle_classes = ref(null);
-    stickytitle_classes.value =
-      props.configUI && props.configUI.stickytitle_classes
-        ? props.configUI.stickytitle_classes
-        : "";
-    const body_classes = ref(null);
-    body_classes.value =
-      props.configUI && props.configUI.body_classes
-        ? props.configUI.body_classes
-        : "";
-    const colors = ref(null);
-    colors.value =
-      props.configUI && props.configUI.colors
-        ? props.configUI.colors
-        : "bg-purple text-white";
-    const hide_maintitle = ref(null);
-    hide_maintitle.value =
-      props.configUI && props.configUI.hide_maintitle
-        ? props.configUI.hide_maintitle
-        : false;
-    const hide_footer = ref(null);
-    hide_footer.value =
-      props.configUI && props.configUI.hide_footer
-        ? props.configUI.hide_footer
-        : false;
-    return {
-      maintitle_classes,
-      stickytitle_classes,
-      body_classes,
-      colors,
-      hide_maintitle,
-      hide_footer,
-    };
+  methods: {
+    getElementHeight(element) {
+      return `${element.clientHeight}`;
+    },
+    handleScroll() {
+      const component = this;
+
+      const elementHeight = component.getElementHeight(
+        this.$refs.secondaryAppBar.$el
+      );
+
+      Util.debounceEvent(function () {
+        component.scrolled = window.scrollY > elementHeight;
+      }, 100);
+    },
   },
   mounted() {
-    const component = this;
-
-    window.addEventListener("scroll", function () {
-      Util.debounceEvent(function () {
-        if (window.scrollY > 34) {
-          component.scrolled = true;
-        } else {
-          component.scrolled = false;
-        }
-      }, 10);
-    });
+    if (this.showSecondaryAppbar) {
+      window.addEventListener("scroll", this.handleScroll);
+    }
+  },
+  unmounted() {
+    if (this.showSecondaryAppbar) {
+      window.removeEventListener("scroll", this.handleScroll);
+    }
   },
 };
 </script>
 
 <style>
-.header-list,
-.footer-list {
-  @apply items-center flex;
+.primary-appbar .appbar-content,
+.secondary-appbar .appbar-content {
+  @apply flex items-center w-full;
 }
-.header-list li,
-.footer-list li {
-  @apply flex-auto;
+
+.appbar-title {
+  @apply flex-1 min-w-0 text-base overflow-hidden whitespace-nowrap overflow-ellipsis;
+}
+
+.appbar-append,
+.appbar-prepend {
+  @apply flex items-center;
+}
+
+.appbar-prepend {
+  @apply pr-2 mr-auto;
+}
+
+.appbar-append {
+  @apply pl-2 ml-auto flex gap-3;
+}
+
+.secondary-appbar .appbar-title {
+  @apply text-2xl;
 }
 
 #app-footer {
   @apply sticky z-10 bg-lighter-gray bottom-0 w-full border-t border-gray;
 }
 
-.footer-list li {
-  @apply p-2 pb-6 text-center;
+.footer-list {
+  @apply items-center flex;
 }
+
+.footer-list li {
+  @apply flex-auto p-2 pb-6 text-center;
+}
+
 .footer-list li svg {
   @apply inline-block;
-}
-
-.header-list li:nth-child(1),
-.header-list li:nth-child(3) {
-  @apply w-8;
-}
-
-.header-list li:nth-child(1) {
-  @apply pl-1;
-}
-
-.header-list li:nth-child(2) {
-  @apply text-center px-2;
-}
-
-.header-list li:nth-child(3) {
-  @apply pr-1;
-}
-
-.maintitle {
-  @apply text-2xl p-4 pt-4 bg-purple text-white border-b border-light-gray;
 }
 </style>

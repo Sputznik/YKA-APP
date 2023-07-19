@@ -1,13 +1,15 @@
 <template>
-  <AppUI
-    :title="post.title.rendered"
-    :configUI="{
-      maintitle_classes: 'hidden',
-      stickytitle_classes: 'opacity-100',
-      hide_maintitle: true,
-      hide_footer: true,
-    }"
-  >
+  <AppUI :showFooter="false" appbarClasses="text-center">
+    <template v-slot:prepend>
+      <router-link :to="{ name: 'Home' }">
+        <Icon type="Back" class="inline text-white" />
+      </router-link>
+    </template>
+    <template v-slot:append>
+      <router-link :to="{ name: 'Comments' }">
+        <Icon type="Comment" class="inline text-white h-6 w-6" />
+      </router-link>
+    </template>
     <template v-slot:appbody>
       <div :class="`single-${post.type}`">
         <PostTitle :status="status" :post="post" />
@@ -50,6 +52,7 @@
 </template>
 
 <script>
+import Icon from "@/components/Icon.vue";
 import OrbitPosts from "@/lib/OrbitPosts.vue";
 import OrbitAuthor from "@/lib/OrbitAuthor.vue";
 import AppUI from "@/components/app-ui/AppUI.vue";
@@ -68,6 +71,7 @@ export default {
     status: String,
   },
   components: {
+    Icon,
     AppUI,
     PostTitle,
     OrbitPosts,
