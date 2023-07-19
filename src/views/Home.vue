@@ -2,7 +2,7 @@
   <AppUI title="Home">
     <template v-slot:headerright>
       <router-link :to="{ name: 'Home' }">
-        <Icon type="Plus" class="inline text-white" />
+        <Icon icon="plus" class="inline text-white" />
       </router-link>
     </template>
     <template v-slot:appbody>

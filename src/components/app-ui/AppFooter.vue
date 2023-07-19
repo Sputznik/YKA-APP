@@ -4,8 +4,8 @@
       <li v-for="item in items" :key="item">
         <router-link :to="{ name: item.routeName }" class="hover:opacity-80">
           <Icon
+            :icon="item.icon"
             class="text-black h-5 w-5"
-            :type="item.icon"
             :class="{ 'text-purple': item.allowedRoutes.includes($route.name) }"
           />
           <p
@@ -34,28 +34,28 @@ export default {
     return {
       items: [
         {
-          icon: "Home",
+          icon: "home",
           routeName: "Home",
           allowedRoutes: ["Home"],
         },
 
         {
-          icon: "Members",
+          icon: "members",
           routeName: "Members",
           allowedRoutes: ["Members", "SingleMember"],
         },
         {
-          icon: "Event",
+          icon: "event",
           routeName: "Events",
           allowedRoutes: ["Events", "SingleEvent"],
         },
         {
-          icon: "Comment",
+          icon: "comment",
           routeName: "Comments",
           allowedRoutes: ["Comments"],
         },
         {
-          icon: "Profile",
+          icon: "profile",
           routeName: "Profile",
           allowedRoutes: ["Profile"],
         },

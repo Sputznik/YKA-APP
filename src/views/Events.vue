@@ -2,7 +2,7 @@
   <AppUI title="Events">
     <template v-slot:headerright>
       <router-link :to="{ name: 'Events' }">
-        <Icon type="Plus" class="inline text-white" />
+        <Icon icon="plus" class="inline text-white" />
       </router-link>
     </template>
     <template v-slot:appbody>Events</template>

@@ -2,12 +2,12 @@
   <AppUI :showFooter="false" appbarClasses="text-center">
     <template v-slot:prepend>
       <router-link :to="{ name: 'Home' }">
-        <Icon type="Back" class="inline text-white" />
+        <Icon icon="back" class="inline text-white" />
       </router-link>
     </template>
     <template v-slot:append>
       <router-link :to="{ name: 'Comments' }">
-        <Icon type="Comment" class="inline text-white h-6 w-6" />
+        <Icon icon="comment" class="inline text-white h-6 w-6" />
       </router-link>
     </template>
     <template v-slot:appbody>

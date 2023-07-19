@@ -1,6 +1,6 @@
 <template>
   <svg
-    v-if="type == 'filter'"
+    v-if="icon == 'filter'"
     version="1.1"
     class="w-8"
     xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@
 
   <!-- HOME ICON -->
   <svg
-    v-else-if="type == 'Home'"
+    v-else-if="icon == 'home'"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -70,7 +70,7 @@
   </svg>
 
   <svg
-    v-else-if="type == 'Event'"
+    v-else-if="icon == 'event'"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 20 20"
@@ -85,7 +85,7 @@
 
   <!-- PROFILE ICON -->
   <svg
-    v-else-if="type == 'Profile'"
+    v-else-if="icon == 'profile'"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -108,7 +108,7 @@
 
   <!-- LOCATION ICON -->
   <svg
-    v-else-if="type == 'Location'"
+    v-else-if="icon == 'location'"
     xmlns="http://www.w3.org/2000/svg"
     class="w-4 inline"
     fill="none"
@@ -131,7 +131,7 @@
 
   <!-- GENDER (PERSON) ICON -->
   <svg
-    v-else-if="type == 'Gender'"
+    v-else-if="icon == 'gender'"
     xmlns="http://www.w3.org/2000/svg"
     class="w-4 inline"
     fill="none"
@@ -148,7 +148,7 @@
 
   <!-- GROUP ICON -->
   <svg
-    v-else-if="type == 'Group'"
+    v-else-if="icon == 'group'"
     xmlns="http://www.w3.org/2000/svg"
     class="w-4 inline"
     fill="none"
@@ -165,7 +165,7 @@
 
   <!-- PROFESSION ICON -->
   <svg
-    v-else-if="type == 'Profession'"
+    v-else-if="icon == 'profession'"
     xmlns="http://www.w3.org/2000/svg"
     class="w-4 inline"
     fill="none"
@@ -182,7 +182,7 @@
 
   <!-- STATUS ICON -->
   <svg
-    v-else-if="type == 'Status'"
+    v-else-if="icon == 'status'"
     xmlns="http://www.w3.org/2000/svg"
     class="w-4 inline"
     fill="none"
@@ -199,7 +199,7 @@
 
   <!-- ERROR ICON -->
   <svg
-    v-else-if="type == 'Error'"
+    v-else-if="icon == 'error'"
     class="w-5 h-5"
     fill="currentColor"
     viewBox="0 0 20 20"
@@ -214,7 +214,7 @@
 
   <!-- CLOSE ICON -->
   <svg
-    v-else-if="type == 'Close'"
+    v-else-if="icon == 'close'"
     class="w-5 h-5"
     fill="currentColor"
     viewBox="0 0 20 20"
@@ -229,7 +229,7 @@
 
   <!-- HISTORY (PLAY) ICON -->
   <svg
-    v-else-if="type == 'History'"
+    v-else-if="icon == 'history'"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -252,7 +252,7 @@
   <!-- COMMENT (MESSAGE) ICON -->
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    v-else-if="type == 'Comment'"
+    v-else-if="icon == 'comment'"
     v-bind="$attrs"
     fill="none"
     viewBox="0 0 24 24"
@@ -268,7 +268,7 @@
 
   <!-- DELETE ICON -->
   <svg
-    v-else-if="type == 'Delete'"
+    v-else-if="icon == 'delete'"
     xmlns="http://www.w3.org/2000/svg"
     class="h-5 w-5"
     fill="none"
@@ -283,7 +283,7 @@
     />
   </svg>
   <svg
-    v-else-if="type == 'Back'"
+    v-else-if="icon == 'back'"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
     class="h-6 w-6 -ml-1"
@@ -295,7 +295,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
   </svg>
   <svg
-    v-else-if="type == 'Plus'"
+    v-else-if="icon == 'plus'"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
     class="h-5 w-5"
@@ -309,7 +309,7 @@
     />
   </svg>
   <svg
-    v-else-if="type == 'CircularLoader'"
+    v-else-if="icon == 'circular-loader'"
     class="animate-spin h-5 w-5 text-white mr-2"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
@@ -331,7 +331,7 @@
     ></path>
   </svg>
   <svg
-    v-else-if="type == 'Clock'"
+    v-else-if="icon == 'clock'"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
     class="h-6 w-6"
@@ -347,7 +347,7 @@
     />
   </svg>
   <svg
-    v-else-if="type == 'Members'"
+    v-else-if="icon == 'members'"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -362,7 +362,7 @@
     />
   </svg>
   <svg
-    v-else-if="type == 'Check'"
+    v-else-if="icon == 'check'"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
     class="h-6 w-6"
@@ -374,7 +374,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
   </svg>
   <svg
-    v-else-if="type == 'Chevron-Down'"
+    v-else-if="icon == 'chevron-down'"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
     class="h-4 w-4"
@@ -386,7 +386,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
   </svg>
   <svg
-    v-else-if="type == 'Edit'"
+    v-else-if="icon == 'edit'"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
     class="h-6 w-6"
@@ -402,7 +402,7 @@
     />
   </svg>
   <svg
-    v-else-if="type == 'Archive'"
+    v-else-if="icon == 'archive'"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
     class="h-6 w-6"
@@ -418,7 +418,7 @@
     />
   </svg>
   <svg
-    v-else-if="type == 'Search'"
+    v-else-if="icon == 'search'"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
     class=""
@@ -434,7 +434,7 @@
     />
   </svg>
   <svg
-    v-else-if="type == 'Right-Arrow'"
+    v-else-if="icon == 'right-arrow'"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -445,7 +445,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
   </svg>
   <svg
-    v-else-if="type == 'Single-User'"
+    v-else-if="icon == 'single-user'"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -460,7 +460,7 @@
     />
   </svg>
   <svg
-    v-else-if="type == 'Team'"
+    v-else-if="icon == 'team'"
     v-bind="$attrs"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -479,7 +479,10 @@
 export default {
   name: "Icon",
   props: {
-    type: String,
+    icon: {
+      String,
+      required: true,
+    },
   },
 };
 </script>
