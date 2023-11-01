@@ -133,6 +133,12 @@ const api = {
       });
     }
   },
+  requestAppSettings: function () {
+    return this.makeRequest({
+      url: this._getURL("/wp-json/yka/v2/settings"),
+      method: "get",
+    });
+  },
 };
 
 export default api;
