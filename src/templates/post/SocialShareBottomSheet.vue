@@ -13,7 +13,7 @@
           <a
             v-if="icon.name != 'like'"
             target="_blank"
-            :href="icon.url"
+            :href="getShareURL(icon.name)"
             :aria-label="icon.title"
             class="inline-block"
             :class="`icon-${icon.name}`"
@@ -62,23 +62,34 @@ export default {
         {
           name: "facebook",
           title: "Share on Facebook",
-          url: `https://www.facebook.com/sharer/sharer.php?u=${this.post.link}`,
         },
         {
           name: "twitter",
           title: "Share on Twitter",
-          url: `https://twitter.com/intent/tweet?text=${this.post.title.rendered}&url=${this.post.link}`,
         },
         {
           name: "whatsapp",
           title: "Share on Whatsapp",
-          url: `https://api.whatsapp.com/send?text=${this.post.link}`,
         },
       ],
       upvotes: null,
     };
   },
-  methods: {},
+  methods: {
+    getShareURL(network) {
+      const post = this.post;
+      switch (network) {
+        case "facebook":
+          return `https://www.facebook.com/sharer/sharer.php?u=${post.link}`;
+        case "whatsapp":
+          return `https://api.whatsapp.com/send?text=${post.link}`;
+        case "twitter":
+          return `https://twitter.com/intent/tweet?text=${post.title.rendered}&url=${post.link}`;
+        default:
+          return "#";
+      }
+    },
+  },
 };
 </script>
 
