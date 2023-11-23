@@ -42,6 +42,11 @@ const routes = [
     name: "Archive",
     component: () => import("@/views/Archive"),
   },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: () => import("@/views/NotFound"),
+  },
 ];
 
 const router = createRouter({
