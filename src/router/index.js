@@ -23,6 +23,16 @@ const routes = [
     component: () => import("@/views/Comments"),
   },
   {
+    path: "/search",
+    name: "Search",
+    component: () => import("@/views/Search"),
+  },
+  {
+    path: "/my-posts",
+    name: "MyPosts",
+    component: () => import("@/views/MyPosts"),
+  },
+  {
     path: "/profile",
     name: "Profile",
     component: () => import("@/views/Profile"),

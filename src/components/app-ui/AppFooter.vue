@@ -38,27 +38,36 @@ export default {
           routeName: "Home",
           allowedRoutes: ["Home"],
         },
-
         {
-          icon: "members",
-          routeName: "Members",
-          allowedRoutes: ["Members", "SingleMember"],
+          icon: "search",
+          routeName: "Search",
+          allowedRoutes: ["Search"],
         },
         {
-          icon: "event",
-          routeName: "Events",
-          allowedRoutes: ["Events", "SingleEvent"],
-        },
-        {
-          icon: "comment",
-          routeName: "Comments",
-          allowedRoutes: ["Comments"],
+          icon: "archive",
+          routeName: "MyPosts",
+          allowedRoutes: ["MyPosts"],
         },
         {
           icon: "profile",
           routeName: "Profile",
           allowedRoutes: ["Profile"],
         },
+        // {
+        //   icon: "members",
+        //   routeName: "Members",
+        //   allowedRoutes: ["Members", "SingleMember"],
+        // },
+        // {
+        //   icon: "event",
+        //   routeName: "Events",
+        //   allowedRoutes: ["Events", "SingleEvent"],
+        // },
+        // {
+        //   icon: "comment",
+        //   routeName: "Comments",
+        //   allowedRoutes: ["Comments"],
+        // },
       ],
     };
   },
