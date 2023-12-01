@@ -139,6 +139,20 @@ const api = {
       method: "get",
     });
   },
+  requestVerifyMail: function (params = {}) {
+    return this.makeRequest({
+      url: this._getURL("/wp-json/yka/v2/verify/"),
+      method: "post",
+      data: params,
+    });
+  },
+  requestAuthenticateEmailAddress: function (params = {}) {
+    return this.makeRequest({
+      url: this._getURL("/wp-json/yka/v2/auth/"),
+      method: "post",
+      data: params,
+    });
+  },
 };
 
 export default api;
