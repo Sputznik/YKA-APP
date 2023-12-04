@@ -159,4 +159,7 @@ export default {
     };
     return route;
   },
+  convertToObject(vueModel) {
+    return JSON.parse(JSON.stringify(vueModel));
+  },
 };
